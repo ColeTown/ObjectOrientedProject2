@@ -1,37 +1,57 @@
 =========================
-   Main
+     Project2
 =========================
 =========================
 =========================
 
 
 =========================
-   Card
+     Card
 =========================
 -Color: String
 -Number: int
 -cardType: int
 =========================
++Card(color: String, number: int, cardType: int): void
 =========================
 
 
 =========================
      Deck
 =========================
--Cards: Card[]
+-Cards: ArrayList<Card>
+-hasActionCards: boolean
 =========================
++Deck(numberOfDecks: int, shuffledTogether: boolean, includeActionCards: boolean): void
++Deck(): void
++takeCard(i: int): Card
++returnCard(x: Card): void
 =========================
 
 
 =========================
      Hand
 =========================
--Hand: Card[]
+-CurrentHand: Card[]
 =========================
++Hand(): void
++SortCards(): void
++setHand(Card[]): void
++getHand(): Card[]
 =========================
 
+
 =========================
-   Exercise
+     Workout
 =========================
+-repetitionsPerExercise: int[]
+-totalRepetitions: int[]
+-totalSkippedRepetitions: int[]
 =========================
++Workout(): void
++calculateRound(Card[]): void
+-updateTotals(): void
++getCurrentReps(): int[]
++getTotalReps(): int[]
++getTotalSkips(): int[]
 =========================
