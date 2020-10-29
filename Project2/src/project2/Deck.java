@@ -13,6 +13,12 @@ public class Deck {
     
     public Deck(int numberOfDecks, boolean shuffledTogether, boolean includeActionCards) {
         this.hasActionCards = includeActionCards;
+        
+        for(int i = 0; i < numberOfDecks; i++) {
+            //create one deck with all cards
+        }
+        
+        shuffleDeck(shuffledTogether);
     }
     
     public Card takeCard(int i) {
@@ -21,6 +27,10 @@ public class Deck {
     
     public void returnCard(Card x) {
         Cards.add(x);
+    }
+    
+    public void shuffleDeck(boolean shuffledTogether) {
+        
     }
     
 }
