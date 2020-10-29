@@ -50,7 +50,7 @@ public static GridPane firstScene(Stage primaryStage) {
         threeDecks.setText("3 Decks");
         threeDecks.setOnAction((ActionEvent event) -> {
             System.out.println("Three Decks Chosen");
-            numberOfDecks = 2;
+            numberOfDecks = 3;
             primaryStage.getScene().setRoot(secondScene(primaryStage));
  });
 
