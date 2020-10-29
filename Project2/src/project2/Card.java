@@ -2,7 +2,7 @@ package project2;
 
 public class Card {
     
-    private final String Color;
+    private final int Color; // 0 = Blue, 1 = Yellow, 2 = Red, 3 = Green
     private final int Number;
     private final int cardType;
     
