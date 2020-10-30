@@ -12,6 +12,30 @@ public class Card {
         this.cardType = cardType;
     }
     
+    void setCardType(int cardType) {
+        this.cardType = cardType;
+    }//end setCardType
+    
+    int getCardType() {
+        return this.cardType;
+    }//end getCardType
+    
+    void setNumber(int number) {
+        this.Number = number;
+    }//end setNumber
+    
+    int getNumber() {
+        return this.Number;
+    }//end getNumber
+    
+    void setColor(int color) {
+        this.Color = color;
+    }//end setColor
+    
+    int getColor() {
+        return this.Color;
+    }//end getColor
+    
     @Override
     public String toString() {
         return "[" + Color + ", " + Number + ", " + cardType + "]";
