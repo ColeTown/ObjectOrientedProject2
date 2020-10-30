@@ -14,6 +14,7 @@ public class Project2 extends Application {
     private static int numberOfDecks;
     private static boolean shuffleTogether;
     private static boolean includeActionCards;
+    private static int round;
     
     public static void main(String[] args) {
         launch(args);
@@ -94,12 +95,18 @@ public static GridPane thirdScene(Stage primaryStage) {
         include.setOnAction((ActionEvent event) -> {
             deck = new Deck(numberOfDecks, shuffleTogether, true);
             System.out.println("Included Chosen");
+            hand = new Hand();
+            round = 1;
+            primaryStage.getScene().setRoot(roundScene(primaryStage));
  });
         
         remove.setText("Remove");
         remove.setOnAction((ActionEvent event) -> {
             deck = new Deck(numberOfDecks, shuffleTogether, false);
             System.out.println("Not Included Chosen");
+            hand = new Hand();
+            round = 1;
+            primaryStage.getScene().setRoot(roundScene(primaryStage));
  });
         
 
@@ -109,13 +116,15 @@ public static GridPane thirdScene(Stage primaryStage) {
         return root;
 }
 
-//public static GridPane roundScene(Stage primaryStage) {
-// primaryStage.setTitle("Round " + round); //round can be kept up with on a global variable
-//
-// 
-//        Pane root = new Pane();
-//        return root;
-//
-//}
+public static GridPane roundScene(Stage primaryStage) {
+ hand.setHand(deck.takeCard(7));
+ primaryStage.setTitle("Round " + round); //round can be kept up with on a global variable
+ round++;
+
+ 
+        GridPane root = new GridPane();
+        return root;
+
+}
 
 }
