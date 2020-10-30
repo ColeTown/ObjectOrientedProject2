@@ -21,19 +21,19 @@ public class Card {
     }//end getCardType
     
     void setNumber(int number) {
-        this.number = number;
+        this.Number = number;
     }//end setNumber
     
     int getNumber() {
-        return this.number;
+        return this.Number;
     }//end getNumber
     
     void setColor(int color) {
-        this.color = color;
+        this.Color = color;
     }//end setColor
     
     int getColor() {
-        return this.color;
+        return this.Color;
     }//end getColor
     
     @Override
