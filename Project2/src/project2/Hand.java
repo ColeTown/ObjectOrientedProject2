@@ -2,7 +2,7 @@ package project2;
 
 public class Hand {
     
-    private Card[] CurrentHand;
+    private Card[] CurrentHand = new Card[7];
     
     public Hand() {
         
@@ -13,7 +13,7 @@ public class Hand {
     }
     
     public void setHand(Card[] newHand) {
-        
+        this.CurrentHand = newHand;
     }
     
     public Card[] getHand() {
