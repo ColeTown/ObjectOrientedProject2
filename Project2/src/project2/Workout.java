@@ -2,11 +2,17 @@ package project2;
 
 public class Workout extends Deck{
     
-        private int pushReps;
-        private int squatReps;
-        private int sitReps;
-        private int lungeReps;
-        private int burpReps;
+        private int currentPushReps;
+        private int currentSquatReps;
+        private int currentSitReps;
+        private int currentLungeReps;
+        private int currentBurpReps;
+        
+        private int totalPushReps;
+        private int totalSquatReps;
+        private int totalSitReps;
+        private int totalLungeReps;
+        private int totalBurpReps;
         private int totalSkipped;
     
     public Workout() {
@@ -14,14 +20,21 @@ public class Workout extends Deck{
     }
     
     public void calculateRound(Card[] x, int handSize) {
+        
+        currentPushReps = 0;
+        currentSquatReps = 0;
+        currentSitReps = 0;
+        currentLungeReps = 0;
+        currentBurpReps = 0;
+        
         //logic to set reps for each exercise with defualt cards
         for(int i = 0; i < handSize; i++ ) {
             if(x[i].getCardType() == 0) {
                 switch (x[i].getColor()) {
-                    case 0 : pushReps += x[i].getNumber(); break;
-                    case 1 : squatReps += x[i].getNumber(); break;
-                    case 2 : sitReps += x[i].getNumber(); break;
-                    case 3 : lungeReps += x[i].getNumber(); break;
+                    case 0 : currentPushReps += x[i].getNumber(); break;
+                    case 1 : currentSquatReps += x[i].getNumber(); break;
+                    case 2 : currentSitReps += x[i].getNumber(); break;
+                    case 3 : currentLungeReps += x[i].getNumber(); break;
                 }//end switch
             }
             else {
@@ -31,10 +44,10 @@ public class Workout extends Deck{
         for(int i = 0; i < handSize; i++ ) {
             if(x[i].getCardType() == 1) {
                 switch (x[i].getColor()) {
-                    case 0 : totalSkipped += pushReps; pushReps = 0; break;
-                    case 1 : totalSkipped += squatReps; squatReps = 0; break;
-                    case 2 : totalSkipped += sitReps; sitReps = 0; break;
-                    case 3 : totalSkipped += lungeReps; lungeReps = 0; break;
+                    case 0 : totalSkipped += currentPushReps; currentPushReps = 0; break;
+                    case 1 : totalSkipped += currentSquatReps; currentSquatReps = 0; break;
+                    case 2 : totalSkipped += currentSitReps; currentSitReps = 0; break;
+                    case 3 : totalSkipped += currentLungeReps; currentLungeReps = 0; break;
                 }
             }
             else {
@@ -44,10 +57,10 @@ public class Workout extends Deck{
         for(int i = 0; i < handSize; i++ ) {
             if(x[i].getCardType() == 2) {
                 switch (x[i].getColor()) {
-                    case 0 : pushReps = pushReps * 2; break;
-                    case 1 : squatReps = squatReps * 2; break;
-                    case 2 : sitReps = sitReps * 2; break;
-                    case 3 : lungeReps = lungeReps * 2; break;
+                    case 0 : currentPushReps = currentPushReps * 2; break;
+                    case 1 : currentSquatReps = currentSquatReps * 2; break;
+                    case 2 : currentSitReps = currentSitReps * 2; break;
+                    case 3 : currentLungeReps = currentLungeReps * 2; break;
                 }
             }
             else {
@@ -57,11 +70,13 @@ public class Workout extends Deck{
         for(int i = 0; i < handSize; i++ ) {
             if(x[i].getCardType() == 3) {
                 for(int j = 0; j < handSize; j++ ) {
+                    if(i != j) {
                     switch (x[i].getColor()) {
-                         case 0 : super.returnCard(x[j]); pushReps = 0; break;
-                         case 1 : super.returnCard(x[j]); squatReps = 0; break;
-                         case 2 : super.returnCard(x[j]); sitReps = 0; break;
-                         case 3 : super.returnCard(x[j]); lungeReps = 0; break;
+                         case 0 : super.returnCard(x[j]); currentPushReps = 0; break;
+                         case 1 : super.returnCard(x[j]); currentSquatReps = 0; break;
+                         case 2 : super.returnCard(x[j]); currentSitReps = 0; break;
+                         case 3 : super.returnCard(x[j]); currentLungeReps = 0; break;
+                    }
                     }
                 }
             }
@@ -71,7 +86,7 @@ public class Workout extends Deck{
         //Loop through hand again to calculate wild after reverse, draw 2, skip and default cards have been counted
         for(int i = 0; i < handSize; i++ ) {
             if(x[i].getCardType() == 4) {
-                burpReps = burpReps + 4;
+                currentBurpReps = currentBurpReps + 4;
             }
             else {
             }
@@ -79,37 +94,67 @@ public class Workout extends Deck{
         //Loop through hand again to calculate wild 4 after wild, reverse, draw 2, skip and default cards have been counted
         for(int i = 0; i < handSize; i++ ) {
             if(x[i].getCardType() == 5) {
-                burpReps = burpReps + 4;
+                currentBurpReps = currentBurpReps + 4;
                 switch (x[i].getColor()) {
-                    case 0 : pushReps = pushReps * 4; break;
-                    case 1 : squatReps = squatReps * 4; break;
-                    case 2 : sitReps = sitReps * 4; break;
-                    case 3 : lungeReps = lungeReps * 4; break;
+                    case 0 : currentPushReps = currentPushReps * 4; break;
+                    case 1 : currentSquatReps = currentSquatReps * 4; break;
+                    case 2 : currentSitReps = currentSitReps * 4; break;
+                    case 3 : currentLungeReps = currentLungeReps * 4; break;
                 }
             }
             else {
             }
         }
+        
+        //Updates total reps for each exercise
+        totalPushReps += currentPushReps;
+        totalSquatReps += currentSquatReps;
+        totalSitReps += currentSitReps;
+        totalLungeReps += currentLungeReps;
+        totalBurpReps += currentBurpReps;
+        
     }//end CalculateRound
     
+
+    
+    public int getCurrentPushReps() {
+        return this.currentPushReps;
+    }//end getCurrentPushReps
+    
+    public int getCurrentSquatReps() {
+        return this.currentSquatReps;
+    }//end getCurrentSquatReps
+    
+    public int getCurrentSitReps() {
+        return this.currentSitReps;
+    }//end getCurrentSitReps
+    
+    public int getCurrentLungeReps() {
+        return this.currentLungeReps;
+    }//end getCurrentLungeReps
+    
+    public int getCurrentBurpReps() {
+        return this.currentBurpReps;
+    }//end getCurrentBurpReps
+    
     public int getTotalPushReps() {
-        return this.pushReps;
-    }//end getTotalPushReps
+        return this.totalPushReps;
+    }//end getTotalPush Reps
     
     public int getTotalSquatReps() {
-        return this.squatReps;
+        return this.totalSquatReps;
     }//end getTotalSquatReps
     
     public int getTotalSitReps() {
-        return this.sitReps;
+        return this.totalSitReps;
     }//end getTotalSitReps
     
     public int getTotalLungeReps() {
-        return this.lungeReps;
+        return this.totalLungeReps;
     }//end getTotalLungeReps
     
     public int getTotalBurpReps() {
-        return this.burpReps;
+        return this.totalBurpReps;
     }//end getTotalBurpReps
     
     public int getTotalSkips() {
