@@ -130,41 +130,21 @@ public class Project2 extends Application {
                 Card tempCard = tempHand[i];
                 System.out.println(tempCard);
                 switch (tempCard.getColor()) {
-                    case -1:
-                        tempString += "Wild ";
-                        break;
-                    case 0:
-                        tempString += "Blue ";
-                        break;
-                    case 1:
-                        tempString += "Yellow ";
-                        break;
-                    case 2:
-                        tempString += "Red ";
-                        break;
-                    case 3:
-                        tempString += "Green ";
-                        break;
+                    case -1: tempString += "Wild "; break;
+                    case 0: tempString += "Blue "; break;
+                    case 1: tempString += "Yellow "; break;
+                    case 2: tempString += "Red "; break;
+                    case 3: tempString += "Green "; break;
                 }
                 if (tempCard.getNumber() != -1) {
                     tempString += tempCard.getNumber();
                 }
                 switch (tempCard.getCardType()) {
-                    case 1:
-                        tempString += "Skip";
-                        break;
-                    case 2:
-                        tempString += "Draw Two";
-                        break;
-                    case 3:
-                        tempString += "Reverse";
-                        break;
-                    case 4:
-                        tempString += "Card";
-                        break;
-                    case 5:
-                        tempString += "Draw Four";
-                        break;
+                    case 1: tempString += "Skip"; break;
+                    case 2: tempString += "Draw Two"; break;
+                    case 3: tempString += "Reverse"; break;
+                    case 4: tempString += "Card"; break;
+                    case 5: tempString += "Draw Four"; break;
                 }
                 if (i != hand.getCurrentHandSize() - 1) {
                     tempString += ", ";
