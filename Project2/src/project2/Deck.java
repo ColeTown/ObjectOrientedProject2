@@ -58,9 +58,13 @@ public class Deck {
         }
 
     }
-
-    public Card takeCard(int i) {
-        return Cards.remove(i);
+    
+    public Card[] takeCard(int n) {
+        Card[] temp = new Card[n];
+        for(int i = 0; i < n; i++) {
+         temp[i] = Cards.remove(0);
+        }
+        return temp;
     }
     
     public void returnCard(Card x) {
