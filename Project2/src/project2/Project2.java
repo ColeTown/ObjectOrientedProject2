@@ -153,6 +153,7 @@ public class Project2 extends Application {
             Text cards = new Text(tempString);
 
             workout.calculateRound(hand.getHand(), hand.getCurrentHandSize());
+
             int pushups = workout.getCurrentPushReps();
             int squats = workout.getCurrentSquatReps();
             int situps = workout.getCurrentSitReps();
