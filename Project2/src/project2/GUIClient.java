@@ -8,7 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class Project2 extends Application {
+public class GUIClient extends Application {
 
     private static Deck deck;
     private static Hand hand;
