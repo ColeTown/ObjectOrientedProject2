@@ -153,13 +153,13 @@ public class Project2 extends Application {
             Text cards = new Text(tempString);
 
             workout.calculateRound(hand.getHand(), hand.getCurrentHandSize());
-            int pushups = workout.getTotalPushReps(); 
+            int pushups = workout.getTotalPushReps(); //might need to change function used when workout class is fixed
             int squats = workout.getTotalSquatReps();
             int situps = workout.getTotalSitReps();
             int lunges = workout.getTotalLungeReps();
             int burpees = workout.getTotalBurpReps();
 
-            Text exercises = new Text("Exercises: " + pushups + " Push Ups, " + squats + " Squats, " + situps + " Situps, " + lunges + " Lunges, " + burpees + " Burpees");
+            Text exercises = new Text("Exercises: \n    " + pushups + " Push Ups\n    " + squats + " Squats\n    " + situps + " Situps\n    " + lunges + " Lunges\n    " + burpees + " Burpees");
 
             GridPane root = new GridPane();
             root.add(nextRound, 1, 1);
