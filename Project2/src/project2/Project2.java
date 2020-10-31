@@ -15,7 +15,6 @@ public class Project2 extends Application {
     private static Workout workout = new Workout();
     private static int numberOfDecks;
     private static boolean shuffleTogether;
-    private static boolean includeActionCards;
     private static int round;
 
     public static void main(String[] args) {
