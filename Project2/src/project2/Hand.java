@@ -14,6 +14,7 @@ public class Hand {
         for(int i = 0; i < CurrentHand.length; i++) {
             indexOfSmallest = i;
          for(int j = i+1; j < CurrentHand.length; j++) {   
+
           if(CurrentHand[indexOfSmallest].compareTo(CurrentHand[j]) == 1)   {
               indexOfSmallest = j;
           }
