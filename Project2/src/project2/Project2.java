@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Project2 extends Application {
@@ -113,13 +114,67 @@ public class Project2 extends Application {
     }
 
     public static GridPane roundScene(Stage primaryStage) {
-        hand.setHand(deck.takeCard(hand.getHandSize()));
+        if(hand.setHand(deck.takeCard(hand.getNormalHandSize()))) {
         primaryStage.setTitle("Round " + round++);
         
+        Button nextRound = new Button();
+        nextRound.setText("Next Round");
+        nextRound.setOnAction((ActionEvent event) -> {
+            
+            primaryStage.getScene().setRoot(roundScene(primaryStage));
+        });
+        
+            String tempString = "Cards: ";
+            Card[] tempHand = hand.getHand();
+            for (int i = 0; i < hand.getCurrentHandSize(); i++) {
+                Card tempCard = tempHand[i];
+                System.out.println(tempCard);
+                switch (tempCard.getColor()) {
+                    case -1: tempString += "Wild "; break;
+                    case 0: tempString += "Blue "; break;
+                    case 1: tempString += "Yellow "; break;
+                    case 2: tempString += "Red "; break;
+                    case 3: tempString += "Green "; break;
+                }
+                if (tempCard.getNumber() != -1) {
+                    tempString += tempCard.getNumber();
+                }
+                switch (tempCard.getCardType()) {
+                    case 1: tempString += "Skip"; break;
+                    case 2: tempString += "Draw Two"; break;
+                    case 3: tempString += "Reverse"; break;
+                    case 4: tempString += "Card"; break;
+                    case 5: tempString += "Draw Four"; break;
+                }
+                if (i != hand.getCurrentHandSize() - 1) {
+                    tempString += ", ";
+                }
+            }
+            Text cards = new Text(tempString);
 
+            int x = 0; //these will come from the workout class data
+            int y = 0;
+            int z = 0;
+            int a = 0;
+            int b = 0;
+
+        Text exercises = new Text("Exercises: " + x + " Push Ups, " + y + " Squats, " + z + " Situps, " + a + " Lounges, " + b + " Burpees");
+        
+        GridPane root = new GridPane();
+        root.add(nextRound, 1, 1);
+        root.add(cards, 1, 2);
+        root.add(exercises, 1, 3);
+        return root;
+        } else {
+            return finalScene(primaryStage);
+        }
+    }
+    
+    public static GridPane finalScene(Stage primaryStage) {
+        primaryStage.setTitle("Workout Over");
+        
         GridPane root = new GridPane();
         return root;
-
     }
 
 }
