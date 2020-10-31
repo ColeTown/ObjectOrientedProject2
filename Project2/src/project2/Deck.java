@@ -25,10 +25,10 @@ public class Deck {
             }
             if (includeActionCards) {
                 for (int x = 0; x < 6; x++) { //will add two of each action card to the deck
-                    Cards.add(new Card(0, -1, x / 2));
-                    Cards.add(new Card(1, -1, x / 2));
-                    Cards.add(new Card(2, -1, x / 2));
-                    Cards.add(new Card(3, -1, x / 2));
+                    Cards.add(new Card(0, -1, 1 + x / 2));
+                    Cards.add(new Card(1, -1, 1 + x / 2));
+                    Cards.add(new Card(2, -1, 1 + x / 2));
+                    Cards.add(new Card(3, -1, 1 + x / 2));
                 }
             }
             for (int y = 0; y < 4; y++) {
@@ -60,6 +60,9 @@ public class Deck {
     }
     
     public Card[] takeCard(int n) {
+        if(Cards.size() < n) {
+            n = Cards.size();
+        }
         Card[] temp = new Card[n];
         for(int i = 0; i < n; i++) {
          temp[i] = Cards.remove(0);
