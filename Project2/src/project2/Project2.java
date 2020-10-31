@@ -12,6 +12,7 @@ public class Project2 extends Application {
 
     private static Deck deck;
     private static Hand hand;
+    private static Workout workout = new Workout();
     private static int numberOfDecks;
     private static boolean shuffleTogether;
     private static boolean includeActionCards;
@@ -114,21 +115,20 @@ public class Project2 extends Application {
     }
 
     public static GridPane roundScene(Stage primaryStage) {
-        if(hand.setHand(deck.takeCard(hand.getNormalHandSize()))) {
-        primaryStage.setTitle("Round " + round++);
-        
-        Button nextRound = new Button();
-        nextRound.setText("Next Round");
-        nextRound.setOnAction((ActionEvent event) -> {
-            
-            primaryStage.getScene().setRoot(roundScene(primaryStage));
-        });
-        
+        if (hand.setHand(deck.takeCard(hand.getNormalHandSize()))) {
+            primaryStage.setTitle("Round " + round++);
+
+            Button nextRound = new Button();
+            nextRound.setText("Next Round");
+            nextRound.setOnAction((ActionEvent event) -> {
+
+                primaryStage.getScene().setRoot(roundScene(primaryStage));
+            });
+
             String tempString = "Cards: ";
             Card[] tempHand = hand.getHand();
             for (int i = 0; i < hand.getCurrentHandSize(); i++) {
                 Card tempCard = tempHand[i];
-                System.out.println(tempCard);
                 switch (tempCard.getColor()) {
                     case -1: tempString += "Wild "; break;
                     case 0: tempString += "Blue "; break;
@@ -152,27 +152,28 @@ public class Project2 extends Application {
             }
             Text cards = new Text(tempString);
 
-            int x = 0; //these will come from the workout class data
-            int y = 0;
-            int z = 0;
-            int a = 0;
-            int b = 0;
+            workout.calculateRound(hand.getHand(), hand.getCurrentHandSize());
+            int pushups = workout.getTotalPushReps(); //might need to change function used when workout class is fixed
+            int squats = workout.getTotalSquatReps();
+            int situps = workout.getTotalSitReps();
+            int lunges = workout.getTotalLungeReps();
+            int burpees = workout.getTotalBurpReps();
 
-        Text exercises = new Text("Exercises: " + x + " Push Ups, " + y + " Squats, " + z + " Situps, " + a + " Lounges, " + b + " Burpees");
-        
-        GridPane root = new GridPane();
-        root.add(nextRound, 1, 1);
-        root.add(cards, 1, 2);
-        root.add(exercises, 1, 3);
-        return root;
+            Text exercises = new Text("Exercises: \n    " + pushups + " Push Ups\n    " + squats + " Squats\n    " + situps + " Situps\n    " + lunges + " Lunges\n    " + burpees + " Burpees");
+
+            GridPane root = new GridPane();
+            root.add(nextRound, 1, 1);
+            root.add(cards, 1, 2);
+            root.add(exercises, 1, 3);
+            return root;
         } else {
             return finalScene(primaryStage);
         }
     }
-    
+
     public static GridPane finalScene(Stage primaryStage) {
         primaryStage.setTitle("Workout Over");
-        
+
         GridPane root = new GridPane();
         return root;
     }
