@@ -40,4 +40,17 @@ public class Card {
     public String toString() {
         return "[" + Color + ", " + Number + ", " + cardType + "]";
     }
+    
+    public int compareTo(Object o) {
+        if (Color > ((Card) o).getColor()) {
+            return 1;
+        } else if (Color == ((Card) o).getColor() && Number > ((Card) o).getNumber()) {
+            return 1;
+        } else if (Color == ((Card) o).getColor() && Number == -1 && ((Card) o).getNumber() == -1 && cardType > ((Card) o).getCardType()) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }
+
