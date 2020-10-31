@@ -56,7 +56,7 @@ public class Workout extends Deck{
         //Loop through hand again to calculate reverse after draw2, skip, and default cards have been counted
         for(int i = 0; i < handSize; i++ ) {
             if(x[i].getCardType() == 3) {
-                for(int j = 0; i < handSize; j++ ) {
+                for(int j = 0; j < handSize; j++ ) {
                     switch (x[i].getColor()) {
                          case 0 : super.returnCard(x[j]); pushReps = 0; break;
                          case 1 : super.returnCard(x[j]); squatReps = 0; break;
