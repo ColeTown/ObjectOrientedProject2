@@ -15,7 +15,6 @@ public class Project2 extends Application {
     private static Workout workout = new Workout();
     private static int numberOfDecks;
     private static boolean shuffleTogether;
-    private static boolean includeActionCards;
     private static int round;
 
     public static void main(String[] args) {
@@ -25,7 +24,7 @@ public class Project2 extends Application {
     @Override
     public void start(Stage primaryStage) {
         GridPane root = firstScene(primaryStage);
-        primaryStage.setScene(new Scene(root, 800, 500));
+        primaryStage.setScene(new Scene(root, 500, 300));
         primaryStage.show();
     }
 
@@ -36,21 +35,18 @@ public class Project2 extends Application {
         Button threeDecks = new Button();
         oneDeck.setText("1 Deck");
         oneDeck.setOnAction((ActionEvent event) -> {
-            System.out.println("One Deck Chosen");
             numberOfDecks = 1;
             primaryStage.getScene().setRoot(secondScene(primaryStage)); //Changes the scene to the next set of buttons
         });
 
         twoDecks.setText("2 Decks");
         twoDecks.setOnAction((ActionEvent event) -> {
-            System.out.println("Two Decks Chosen");
             numberOfDecks = 2;
             primaryStage.getScene().setRoot(secondScene(primaryStage));
         });
 
         threeDecks.setText("3 Decks");
         threeDecks.setOnAction((ActionEvent event) -> {
-            System.out.println("Three Decks Chosen");
             numberOfDecks = 3;
             primaryStage.getScene().setRoot(secondScene(primaryStage));
         });
@@ -68,14 +64,12 @@ public class Project2 extends Application {
         Button together = new Button();
         individual.setText("Individually");
         individual.setOnAction((ActionEvent event) -> {
-            System.out.println("Individually Chosen");
             shuffleTogether = false;
             primaryStage.getScene().setRoot(thirdScene(primaryStage));
         });
 
         together.setText("Together");
         together.setOnAction((ActionEvent event) -> {
-            System.out.println("Together Chosen");
             shuffleTogether = true;
             primaryStage.getScene().setRoot(thirdScene(primaryStage));
         });
@@ -93,7 +87,6 @@ public class Project2 extends Application {
         include.setText("Include");
         include.setOnAction((ActionEvent event) -> {
             deck = new Deck(numberOfDecks, shuffleTogether, true);
-            System.out.println("Included Chosen");
             hand = new Hand();
             round = 1;
             primaryStage.getScene().setRoot(roundScene(primaryStage));
@@ -102,7 +95,6 @@ public class Project2 extends Application {
         remove.setText("Remove");
         remove.setOnAction((ActionEvent event) -> {
             deck = new Deck(numberOfDecks, shuffleTogether, false);
-            System.out.println("Not Included Chosen");
             hand = new Hand();
             round = 1;
             primaryStage.getScene().setRoot(roundScene(primaryStage));
@@ -162,10 +154,15 @@ public class Project2 extends Application {
 
             Text exercises = new Text("Exercises: \n    " + pushups + " Push Ups\n    " + squats + " Squats\n    " + situps + " Situps\n    " + lunges + " Lunges\n    " + burpees + " Burpees");
 
+            tempString = "Statistics: \n    ";
+            tempString += "Cards Left: " + deck.Cards.size();
+            Text statistics = new Text(tempString);
+            
             GridPane root = new GridPane();
             root.add(nextRound, 1, 1);
             root.add(cards, 1, 2);
             root.add(exercises, 1, 3);
+            root.add(statistics, 1, 4);
             return root;
         } else {
             return finalScene(primaryStage);
@@ -174,8 +171,16 @@ public class Project2 extends Application {
 
     public static GridPane finalScene(Stage primaryStage) {
         primaryStage.setTitle("Workout Over");
-
+        String tempString = "Statistics: \n   ";
+        tempString += "Total Skiped Reps: " + workout.getTotalSkips() + "\n\n   ";
+        tempString += "Total Push Ups: " + workout.getTotalPushReps() + "\n   ";
+        tempString += "Total Squats: " + workout.getTotalSquatReps() + "\n   ";
+        tempString += "Total Situps: " + workout.getTotalSitReps() + "\n   ";
+        tempString += "Total Lunges: " + workout.getTotalLungeReps() + "\n   ";
+        tempString += "Total Burpees: " + workout.getTotalBurpReps() + "\n   ";
+        Text statistics = new Text(tempString);
         GridPane root = new GridPane();
+        root.add(statistics, 1, 1);
         return root;
     }
 
