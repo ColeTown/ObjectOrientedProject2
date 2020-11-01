@@ -1,5 +1,7 @@
 package project2;
 
+/* Card class that gives the object Card it's parameters. A Card object includes its color, its number value, and the cards type*/
+
 public class Card {
 
     private int Color; // 0 = Blue, 1 = Yellow, 2 = Red, 3 = Green, -1 = Wild cards
