@@ -1,5 +1,8 @@
 package project2;
 
+/* Class that allow the user to go through the exercises, and allowing the user to pick how many decks they want as well as if
+they want to sort the decks individually or separate. Also allows the user to pick if they want action and wild cards in the workout.
+Displays the data to the console for the user to read and creates an html file after each round to see data for the round.*/
 
 import java.util.Scanner;
 
