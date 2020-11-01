@@ -12,9 +12,7 @@ public class ConsoleClient {
     private static int numberOfDecks;
     private static boolean shuffleTogether;
     private static boolean includeActionCards;
-
     private static int round = 1;
-
     
     public static void main(String args[]) {
         Scanner s = new Scanner(System.in);
@@ -27,9 +25,10 @@ public class ConsoleClient {
         deck = new Deck(numberOfDecks, shuffleTogether, includeActionCards);
         hand = new Hand();
         
-
-        System.out.println("Round " + round++);
+       
         while(!deck.Cards.isEmpty()) {
+            System.out.println("Round " + round++);
+            hand.setHand(deck.takeCard(hand.getNormalHandSize()));
             //one round takes place in one iteration of this loop
             String tempString = "Cards: ";
             System.out.println(tempString);
@@ -68,8 +67,10 @@ public class ConsoleClient {
             System.out.println();
             System.out.println("Exercises: \n    " + pushups + " Push Ups\n    " + squats + " Squats\n    " + situps + " Situps\n    " + lunges + " Lunges\n    " + burpees + " Burpees");
             System.out.println();
-            tempString = "Statistics: \n    ";
-            tempString += "Cards Left: " + deck.Cards.size();
+            System.out.println(tempString = "Statistics: \n    ");
+            System.out.println();
+            System.out.println(tempString += "Cards Left: " + deck.Cards.size());
+            System.out.println();
         }
         
         System.out.println();
@@ -87,4 +88,3 @@ public class ConsoleClient {
     }//end main
     
 }//end ConsoleClient
-
