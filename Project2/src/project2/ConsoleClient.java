@@ -16,6 +16,7 @@ public class ConsoleClient {
     private static boolean shuffleTogether;
     private static boolean includeActionCards;
     private static int round = 1;
+
     
     public static void main(String args[]) {
         Scanner s = new Scanner(System.in);
@@ -28,6 +29,7 @@ public class ConsoleClient {
         deck = new Deck(numberOfDecks, shuffleTogether, includeActionCards);
         hand = new Hand();
         
+
        
         while(!deck.Cards.isEmpty()) {
             System.out.println("Round " + round++);
@@ -74,7 +76,6 @@ public class ConsoleClient {
             System.out.println();
             System.out.println(tempString += "Cards Left: " + deck.Cards.size());
             System.out.println();
-        }
         
         System.out.println();
         System.out.println("Workout Over");
@@ -91,3 +92,4 @@ public class ConsoleClient {
     }//end main
     
 }//end ConsoleClient
+
