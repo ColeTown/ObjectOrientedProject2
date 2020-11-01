@@ -1,5 +1,7 @@
 package project2;
 
+/*Class that creates a hand of 7 for the user's workout with cards from the deck. Sorts them by number*/
+
 public class Hand {
 
     private int normalHandSize = 7; //this is an option where we can change how many cards are in each hand

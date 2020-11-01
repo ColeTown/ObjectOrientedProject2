@@ -1,5 +1,8 @@
 package project2;
 
+/* Class that allow the user to go through the exercises, and allowing the user to pick how many decks they want as well as if
+they want to sort the decks individually or separate. Also allows the user to pick if they want action and wild cards in the workout.
+Displays the data to the console for the user to read and creates an html file after each round to see data for the round.*/
 
 import java.util.Scanner;
 
@@ -12,7 +15,6 @@ public class ConsoleClient {
     private static int numberOfDecks;
     private static boolean shuffleTogether;
     private static boolean includeActionCards;
-
     private static int round = 1;
 
     
@@ -28,8 +30,10 @@ public class ConsoleClient {
         hand = new Hand();
         
 
-        System.out.println("Round " + round++);
+       
         while(!deck.Cards.isEmpty()) {
+            System.out.println("Round " + round++);
+            hand.setHand(deck.takeCard(hand.getNormalHandSize()));
             //one round takes place in one iteration of this loop
             String tempString = "Cards: ";
             System.out.println(tempString);
@@ -68,9 +72,10 @@ public class ConsoleClient {
             System.out.println();
             System.out.println("Exercises: \n    " + pushups + " Push Ups\n    " + squats + " Squats\n    " + situps + " Situps\n    " + lunges + " Lunges\n    " + burpees + " Burpees");
             System.out.println();
-            tempString = "Statistics: \n    ";
-            tempString += "Cards Left: " + deck.Cards.size();
-        }
+            System.out.println(tempString = "Statistics: \n    ");
+            System.out.println();
+            System.out.println(tempString += "Cards Left: " + deck.Cards.size());
+            System.out.println();
         
         System.out.println();
         System.out.println("Workout Over");

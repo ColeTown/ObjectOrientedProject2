@@ -1,5 +1,9 @@
 package project2;
 
+/*Class that takes the user's hand and gives the user exercises based on the cards color and number. Takes into account special
+operations with wild and action cards and calculates the amount of reps from each round as well as the total amount of reps that are
+provided to the user at the end of the workout.*/
+
 public class Workout extends Deck{
     
         private int currentPushReps;

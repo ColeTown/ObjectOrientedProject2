@@ -1,5 +1,9 @@
 package project2;
 
+/*Class that creates a stack of cards, or a deck, based on user input. Adds the appropriate amount of cards you would typically see
+in an uno deck, including wild and action cards. Also shuffles the deck, whether indivually or separate from the user as well as takes and adds
+cards back to the deck based on the workout.*/
+
 import java.util.*;
 
 public class Deck {
