@@ -51,8 +51,10 @@ public class ConsoleClient {
 
        
         while(!deck.Cards.isEmpty()) {
+
             System.out.println("Round " + round);
             writer.write("Round " + round++);
+
             hand.setHand(deck.takeCard(hand.getNormalHandSize()));
             //one round takes place in one iteration of this loop
             String tempString = "Cards: ";
@@ -90,6 +92,7 @@ public class ConsoleClient {
             int lunges = workout.getCurrentLungeReps();
             int burpees = workout.getCurrentBurpReps();
             
+
             tempString = "Exercises: \n    " + pushups + " Push Ups\n    " + squats + " Squats\n    " + situps + " Situps\n    " + lunges + " Lunges\n    " + burpees + " Burpees";
             System.out.println(tempString);
             writer.write("<p>" + tempString.replaceAll("\n","<br>") + "</p>");
@@ -100,6 +103,7 @@ public class ConsoleClient {
             s.nextLine();
             
         }
+
         
         String tempString = "Workout Over\n";
         tempString += "Statistics: \n   ";
