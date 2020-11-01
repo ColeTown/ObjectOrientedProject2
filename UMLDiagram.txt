@@ -19,7 +19,15 @@
 =========================
      ConsoleClient
 =========================
+-deck : Deck
+-hand : Hand
+-workout : Workout
+-numberOfDecks : int
+-shuffledTogether : boolean
+-includeActionCards : boolean
+-round : int
 =========================
++main(args[] String) : void
 =========================
 
 =========================
