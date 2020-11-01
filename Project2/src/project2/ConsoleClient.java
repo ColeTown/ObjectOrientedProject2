@@ -12,7 +12,9 @@ public class ConsoleClient {
     private static int numberOfDecks;
     private static boolean shuffleTogether;
     private static boolean includeActionCards;
+
     private static int round = 1;
+
     
     public static void main(String args[]) {
         Scanner s = new Scanner(System.in);
@@ -25,6 +27,7 @@ public class ConsoleClient {
         deck = new Deck(numberOfDecks, shuffleTogether, includeActionCards);
         hand = new Hand();
         
+
         System.out.println("Round " + round++);
         while(!deck.Cards.isEmpty()) {
             //one round takes place in one iteration of this loop
@@ -84,3 +87,4 @@ public class ConsoleClient {
     }//end main
     
 }//end ConsoleClient
+
