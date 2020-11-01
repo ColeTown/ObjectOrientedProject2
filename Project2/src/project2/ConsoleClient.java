@@ -36,31 +36,31 @@ public class ConsoleClient {
             hand.setHand(deck.takeCard(hand.getNormalHandSize()));
             //one round takes place in one iteration of this loop
             String tempString = "Cards: ";
-            System.out.println(tempString);
             Card[] tempHand = hand.getHand();
             for (int i = 0; i < hand.getCurrentHandSize(); i++) {
                 Card tempCard = tempHand[i];
                 switch (tempCard.getColor()) {
-                    case -1: System.out.println(tempString += "Wild "); break;
-                    case 0: System.out.println(tempString += "Blue "); break;
-                    case 1: System.out.println(tempString += "Yellow "); break;
-                    case 2: System.out.println(tempString += "Red "); break;
-                    case 3: System.out.println(tempString += "Green "); break;
+                    case -1: tempString += "Wild "; break;
+                    case 0: tempString += "Blue "; break;
+                    case 1: tempString += "Yellow "; break;
+                    case 2: tempString += "Red "; break;
+                    case 3: tempString += "Green "; break;
                 }
                 if (tempCard.getNumber() != -1) {
                     tempString += tempCard.getNumber();
                 }
                 switch (tempCard.getCardType()) {
-                    case 1: System.out.println(tempString += "Skip"); break;
-                    case 2: System.out.println(tempString += "Draw Two"); break;
-                    case 3: System.out.println(tempString += "Reverse"); break;
-                    case 4: System.out.println(tempString += "Card"); break;
-                    case 5: System.out.println(tempString += "Draw Four"); break;
+                    case 1: tempString += "Skip"; break;
+                    case 2: tempString += "Draw Two"; break;
+                    case 3: tempString += "Reverse"; break;
+                    case 4: tempString += "Card"; break;
+                    case 5: tempString += "Draw Four"; break;
                 }
                 if (i != hand.getCurrentHandSize() - 1) {
-                    System.out.println(tempString += ", ");
+                    tempString += ", ";
                 }
             }
+            System.out.println(tempString);
             workout.calculateRound(hand.getHand(), hand.getCurrentHandSize());
 
             int pushups = workout.getCurrentPushReps();
@@ -89,7 +89,8 @@ public class ConsoleClient {
         System.out.println("Total Lunges: " + workout.getTotalLungeReps() + "\n   ");
         System.out.println("Total Burpees: " + workout.getTotalBurpReps() + "\n   ");
         
-    }//end main
-    
-}//end ConsoleClient
+        }//end main
+
+    }//end ConsoleClient
+}
 
