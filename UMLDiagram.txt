@@ -1,9 +1,26 @@
 =========================
-     Project2
+     GUIClient
 =========================
+-deck : Deck
+-hand : Hand
+-workout : Workout
+-numberOfDecks : int
+-shuffleTogether : boolean
+-round : int
 =========================
++start(primaryStage : Stage) : void
++firstScene(primaryStage : Stage) : GridPane
++secondScene(primaryStage : Stage) : GridPane
++thirdScene(primaryStage : Stage) : GridPane
++roundScene(primaryStage : Stage) : GridPane
++finalScene(primaryStage : Stage) : GridPane
 =========================
 
+=========================
+     ConsoleClient
+=========================
+=========================
+=========================
 
 =========================
      Card
@@ -19,6 +36,8 @@
 +setCardType(cardType : int) : void
 +setNumber(number : int) : void
 +setColor(color : int) : void
++toString() : String
++compareTo(o : Object) : int
 =========================
 
 
@@ -39,25 +58,43 @@
      Hand
 =========================
 -CurrentHand: Card[]
+-normalHandSize: int
 =========================
 +Hand(): void
 +SortCards(): void
-+setHand(Card[]): void
++setHand(Card[]): boolean
 +getHand(): Card[]
++getCurrentSize() : int
++getNormalHandSize() : int
 =========================
 
 
 =========================
      Workout
 =========================
--repetitionsPerExercise: int[]
--totalRepetitions: int[]
--totalSkippedRepetitions: int[]
+-currentPushReps : int
+-currentSquatReps : int
+-currentSitReps : int
+-currentLungeReps : int
+-currentBurpReps : int
+-totalPushReps : int
+-totalSquatReps : int
+-totalSitReps : int
+-totalLungeReps : int
+-totalBurpReps : int
+-totalSkipped : int
 =========================
 +Workout(): void
-+calculateRound(Card[]): void
--updateTotals(): void
-+getCurrentReps(): int[]
-+getTotalReps(): int[]
++calculateRound(Card[], handSize : int): void
++getCurrentPushReps() : int
++getCurrentSquatReps() : int
++getCurrentSitReps() : int
++getCurrentLungeReps() : int
++getCurrentBurpReps() : int
++getTotalPushReps() : int
++getTotalSquatReps() : int
++getTotalSitReps() : int
++getTotalLungeReps() : int
++getTotalBurpReps() : int
 +getTotalSkips(): int[]
 =========================
