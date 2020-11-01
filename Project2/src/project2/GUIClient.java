@@ -1,5 +1,8 @@
 package project2;
 
+/* Class that provides the user with a GUI to work through the program instead of through the console and provides the data associated
+with the exercises and rounds in the interface.*/
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
